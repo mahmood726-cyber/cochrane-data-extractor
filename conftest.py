@@ -7,7 +7,8 @@ time, so when pytest tries to collect them it downloads chromedriver from
 the internet and opens a Chrome session. That takes ~2 min and causes the
 triage 60s smoke cap to fire.
 
-Skip collection of these two files unless RUN_BROWSER_TESTS=1.
+The maintained pytest contract lives under tests/. Skip collection of
+these two root-level scripts unless RUN_BROWSER_TESTS=1.
 
 To run manually:
     python test_page1_url.py
