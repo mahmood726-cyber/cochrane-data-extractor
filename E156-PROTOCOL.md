@@ -10,7 +10,7 @@
 **Date Last Updated**: 2026-04-07
 **Status**: DRAFT
 
-**Dashboard**: [https://mahmood726-cyber.github.io/cochranedataextractor/](https://mahmood726-cyber.github.io/cochranedataextractor/)
+**Dashboard**: [https://mahmood726-cyber.github.io/cochrane-data-extractor/](https://mahmood726-cyber.github.io/cochrane-data-extractor/)
 
 ## E156 Abstract (CURRENT BODY)
 

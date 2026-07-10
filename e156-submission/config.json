@@ -3,7 +3,6 @@
   "slug": "cochrane-data-extractor",
   "author": "Mahmood Ahmad",
   "date": "2026-03-26",
-  "path": "C:\\Projects\\CochraneDataExtractor",
   "type": "methods",
   "primary_estimand": "Risk ratio",
   "summary": "An automated pipeline that extracts structured pairwise, DTA, NMA, and multilevel datasets from Cochrane reviews for methods research.",
