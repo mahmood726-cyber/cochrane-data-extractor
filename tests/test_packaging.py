@@ -83,3 +83,27 @@ def test_config_json_is_valid_and_has_no_path_field():
     assert "path" not in cfg, "config.json still ships a local 'path' field"
     # slug metadata should be the correct hyphenated form.
     assert cfg.get("slug") == CORRECT_SLUG
+
+
+def test_public_landing_discloses_unreproduced_scientific_results():
+    """A packaging-only repository must not present its corpus as independently reproduced."""
+    landing = (REPO_ROOT / "index.html").read_text(encoding="utf-8")
+    absent = [
+        path for path in ("bulk_downloader.py", "progress.json")
+        if not (REPO_ROOT / path).exists()
+    ]
+    if absent:
+        assert 'id="reproducibility-status"' in landing
+        assert "reported results, not independently verified" in landing.lower()
+        assert "underlying extracted tables" in landing
+        assert "<div class=\"metric-value\">&lt;1e-5</div>" not in landing
+        assert '<div class="metric-value">3.1e-5</div>' in landing
+
+
+def test_paper_format_validation_is_not_scientific_validation():
+    """The E156 pass flag checks formatting; scientific status is separately recorded."""
+    paper = json.loads((REPO_ROOT / "e156-submission" / "paper.json").read_text(encoding="utf-8"))
+    checks = paper["validation"]["checks"]
+    assert all(check["ok"] for check in checks)
+    assert paper["validation"]["status"] == "pass"
+    assert paper["notes"]["validation"] == "DRAFT"
