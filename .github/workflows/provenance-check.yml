@@ -1,0 +1,32 @@
+name: Public provenance and packaging tests
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'e156-submission/paper.json'
+      - 'tests/test_packaging.py'
+      - '.github/workflows/provenance-check.yml'
+  push:
+    branches: [master]
+    paths:
+      - 'index.html'
+      - 'e156-submission/paper.json'
+      - 'tests/test_packaging.py'
+      - '.github/workflows/provenance-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest
+      - name: Check shipped assets and honesty of reporting
+        run: python -m pytest -q tests/test_packaging.py

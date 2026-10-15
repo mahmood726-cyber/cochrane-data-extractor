@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Can a pipeline turn Cochrane's open data into research-ready meta-analytic datasets at scale?</title>
-  <meta name="description" content="Cochrane Data Extractor: an automated pipeline that harvested 595 dataset files / 501 unique meta-analyses (82,379 studies) from Cochrane systematic reviews into the open Pairwise70 corpus.">
+  <meta name="description" content="Cochrane Data Extractor project: reported Cochrane data-harvesting results and replication limitations. Pipeline, underlying extraction files and validation records are not included in this repository.">
   <meta property="og:title" content="Cochrane Data Extractor &mdash; automated harvesting into the Pairwise70 corpus">
   <meta property="og:description" content="595 dataset files, 501 unique meta-analyses, 82,379 pooled studies; 100% concordance vs manual extraction; engine reproduces metafor to 1e-5.">
   <meta property="og:type" content="website">
@@ -93,9 +93,13 @@
       <div class="eyebrow">Methods Project &middot; E156 #24</div>
       <h1>Can a pipeline turn Cochrane's open data into research-ready meta-analytic datasets at scale?</h1>
       <p class="lede">An automated Python pipeline that harvests Cochrane systematic reviews into standardised, ready-to-pool effect-size tables &mdash; the open <b>Pairwise70</b> corpus of 501 meta-analyses spanning 82,379 individual studies.</p>
-      <div class="hero-links"><a class="hero-link primary" href="https://github.com/mahmood726-cyber/Pairwise70">Open the dataset</a><a class="hero-link" href="e156-submission/index.html">Read E156 paper</a><a class="hero-link" href="e156-submission/protocol.md">Protocol</a><a class="hero-link" href="https://github.com/mahmood726-cyber/cochrane-data-extractor">Extractor source</a></div>
-      <div class="hero-rail"><div>Dataset files<b>595 .rda</b></div><div>Unique meta-analyses<b>501</b></div><div>Studies pooled<b>82,379</b></div><div>Pilot concordance<b>100% vs manual</b></div></div>
+      <div class="hero-links"><a class="hero-link primary" href="https://github.com/mahmood726-cyber/Pairwise70">Open the dataset</a><a class="hero-link" href="e156-submission/index.html">Read E156 paper</a><a class="hero-link" href="e156-submission/protocol.md">Protocol</a><a class="hero-link" href="https://github.com/mahmood726-cyber/cochrane-data-extractor">Project repository</a></div>
+      <div class="hero-rail"><div>Dataset files<b>595 .rda</b></div><div>Unique meta-analyses<b>501</b></div><div>Studies pooled<b>82,379</b></div><div>Pilot concordance<b>100% reported</b></div></div>
     </section>
+    <aside id="reproducibility-status" class="card" aria-label="Scientific validation and reproducibility status" style="margin-bottom:24px;border-left:4px solid var(--gold)">
+      <h2 class="section-title">Reproducibility status: reported results, not independently verified</h2>
+      <p class="chapter-intro">Corpus counts, pilot concordance and <code>metafor</code> comparisons on this page are historical project-reported figures, not independently rerun using this repository. The executable downloader (<code>bulk_downloader.py</code>), progress checkpoint, underlying extracted tables and validation records are not committed here. The separate Pairwise70 repository does not by itself validate these specific claims. Scientific validation remains <strong>DRAFT</strong>; a formatting check marked “pass” in <code>e156-submission/paper.json</code> is not an analytical verification.</p>
+    </aside>
     <div class="grid">
       <main>
         <section class="card">
@@ -136,7 +140,7 @@
         <div class="section-break">Validation &amp; Robustness</div>
         <section class="card">
           <h2 class="section-title">Does the extraction hold up?</h2>
-          <p class="chapter-intro">Two independent checks: the extractor was validated against manual extraction on a pilot set, and the bundled pooling engine was validated against the reference <code>metafor</code> package across the corpus.</p>
+          <p class="chapter-intro">The following figures describe reported pilot extraction and pooling-engine comparisons. Their underlying execution records, source tables and validation outputs are not included in this repository, so these checks cannot be independently reproduced from its files.</p>
           <div class="pillrow">
             <span class="pill"><b>11</b> pilot pairwise datasets</span>
             <span class="pill"><b>1,295</b> rows hand-checked</span>
@@ -146,7 +150,7 @@
           </div>
           <div class="metrics">
             <div class="metric"><div class="metric-label">Pilot concordance</div><div class="metric-value">100%</div><div class="metric-note">risk-ratio &amp; mean-difference fields vs manual extraction (1,295 rows, 11 datasets)</div></div>
-            <div class="metric"><div class="metric-label">Engine vs metafor</div><div class="metric-value">&lt;1e-5</div><div class="metric-note">max |&Delta;&theta;| = 6.2e-6, max |&Delta;SE| = 3.1e-5 over 100 analyses</div></div>
+            <div class="metric"><div class="metric-label">Engine vs metafor (reported max difference)</div><div class="metric-value">3.1e-5</div><div class="metric-note">max |&Delta;&theta;| = 6.2e-6, max |&Delta;SE| = 3.1e-5 over 100 analyses</div></div>
             <div class="metric"><div class="metric-label">HKSJ sensitivity</div><div class="metric-value">10.0%</div><div class="metric-note">85 of 850 analyses change significance under Hartung-Knapp</div></div>
             <div class="metric"><div class="metric-label">CIs that widen</div><div class="metric-value">55.1%</div><div class="metric-note">under HKSJ; median CI-width ratio 1.054 across 158 reviews</div></div>
           </div>
